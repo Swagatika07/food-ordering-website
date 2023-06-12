@@ -39,7 +39,7 @@ const Login = () => {
       const fetchData = await fetch(
         `${process.env.REACT_APP_SERVER_DOMIN}/login`,
         {
-          method: "POST",
+          method: "GET",
           headers: {
             "content-type": "application/json",
           },
