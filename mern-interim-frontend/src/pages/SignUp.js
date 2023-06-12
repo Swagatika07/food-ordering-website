@@ -54,7 +54,7 @@ const SignUp = () => {
         const fetchData = await fetch(
           `${process.env.REACT_APP_SERVER_DOMIN}/signup`,
           {
-            method: "POST",
+            method: "GET",
             headers: {
               "content-type": "application/json",
             },
