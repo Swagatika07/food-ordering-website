@@ -41,7 +41,7 @@ app.get("/", (req, res) => {
 
 //signup api
 
-app.post("/signup", async (req, res) => {
+app.get("/signup", async (req, res) => {
   console.log(req.body);
   const { email } = req.body;
   //  userModel.findOne({email:email},(err,result)=>{
@@ -76,7 +76,7 @@ app.post("/signup", async (req, res) => {
 });
 
 //login api
-app.post("/login", async (req, res) => {
+app.get("/login", async (req, res) => {
   // console.log(req.body);
   const { email, password } = req.body;
   try {
@@ -129,7 +129,7 @@ const productModel = mongoose.model("product", schemaProduct);
 
 //save product in data
 //api
-app.post("/uploadProduct", async (req, res) => {
+app.get("/uploadProduct", async (req, res) => {
   // console.log(req.body)
   const data = await productModel(req.body);
   const datasave = await data.save();
