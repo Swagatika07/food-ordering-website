@@ -1,0 +1,125 @@
+import React from "react";
+import { useSelector } from "react-redux";
+import { motion } from "framer-motion";
+import { useState } from "react";
+import CartItem from "../component/CartItem";
+import { MdOutlineKeyboardBackspace } from "react-icons/md";
+import { RiRefreshFill } from "react-icons/ri";
+import EmptyCart from "../images/80582-empty-cart.gif";
+import { useNavigate } from "react-router-dom";
+import { deleteCartItem } from "../redux/productSlice";
+import { useDispatch } from "react-redux";
+
+const Cart = () => {
+  const dispatch = useDispatch();
+  //   const productCartItem = useSelector((state) => state.product.cartItem);
+
+  const productCartItem = useSelector((state) => state.product.cartItem);
+  console.log(productCartItem);
+  const user = useSelector((state) => state.user);
+  const [flag, setFlag] = useState(1);
+  const [total, setTotal] = useState(0);
+  const [showCart, setShowCart] = useState(false);
+  const navigate = useNavigate();
+  const handleShowCart = () => {
+    setShowCart((prev) => !prev);
+    navigate("/");
+  };
+  const totalPrice = productCartItem.reduce(
+    (acc, curr) => acc + parseInt(curr.total),
+    0
+  );
+  const totalQty = productCartItem.reduce(
+    (acc, curr) => acc + parseInt(curr.qty),
+    0
+  );
+
+  return (
+    <div
+      className="fixed top-0 right-0 w-full md:w-350 h-screen bg-white drop-shadow-md flex
+    flex-col z-[101]"
+    >
+      <div className="w-full flex items-start justify-between p-4 cursor-pointer">
+        <motion.div whileTap={{ scale: 0.75 }}>
+          <MdOutlineKeyboardBackspace
+            className="text-textColor text-3xl"
+            onClick={handleShowCart}
+          />
+        </motion.div>
+        <p className="text-textColor text-lg font-semibold">Cart</p>
+        <motion.p
+          whileTap={{ scale: 0.75 }}
+          className="flex items-center gap-2 p-1 px-2 my-2 bg-gray-100 rounded-md hover:shadow-md  cursor-pointer text-textColor text-base"
+        >
+          Clear
+          <RiRefreshFill />
+        </motion.p>
+      </div>
+
+      {/*Bottom section of Cart*/}
+
+      {productCartItem && productCartItem.length > 0 ? (
+        <div className="w-full md:w-350 bg-cartBg h-full rounded-t-[2rem] flex flex-col">
+          <div className="w-full h-340 md:h-42 px-6 py-10 flex flex-col gap-3 overflow-y-scroll scrollbar-none">
+            {productCartItem &&
+              productCartItem.length > 0 &&
+              productCartItem.map((el) => (
+                <CartItem
+                  key={el._id}
+                  id={el._id}
+                  name={el.name}
+                  image={el.image}
+                  category={el.category}
+                  qty={el.qty}
+                  total={el.total}
+                  price={el.price}
+                />
+              ))}
+          </div>
+
+          {/*total cart items*/}
+          <div
+            className="w-full flex-1 bg-cartTotal rounded-t-[2rem] flex flex-col items-center
+      justify-evenly px-8 py-2"
+          >
+            <div className="w-full flex items-center justify-between">
+              <p className="text-gray-400 text-lg">Sub Total</p>
+              <p className="text-gray-400 text-lg">Rs {totalPrice}</p>
+            </div>
+            <div className="w-full flex items-center justify-between">
+              <p className="text-gray-400 text-lg">Delivery</p>
+              <p className="text-gray-400 text-lg">Rs 2.5</p>
+            </div>
+            <div className="w-full border-b border-gray-600 my-2"></div>
+            <div className="w-full flex items-center justify-between">
+              <p className="text-gray-200 text-xl font-semibold">Total</p>
+              <p className="text-gray-200 text-xl font-semibold">
+                Rs {totalPrice + 2.5}
+              </p>
+            </div>
+
+            
+              <motion.button
+                whileTap={{ scale: 0.8 }}
+                type="button"
+                className="w-full p-2 rounded-full bg-yellow-600 text-gray-50
+      text-lg my-2 hover:shadow-lg transition-all duration-150 ease-out"
+              >
+                Check Out
+              </motion.button>
+            
+          </div>
+        </div>
+      ) : (
+        <div className="w-full h-full flex flex-col items-center justify-center gap-6">
+          <img src={EmptyCart} className="w-500" alt="" />
+          <p className="text-xl text-textColor font-semibold">
+            Add some items to your cart
+          </p>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default Cart;
