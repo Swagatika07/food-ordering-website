@@ -10,6 +10,12 @@ Go to the master branch of this repository to check out the project code.
 --Menu Page--
 ![Menu](https://github.com/Swagatika07/food-ordering-website/assets/99073952/3559be67-b35a-4fea-8283-fac4a658d422)
 
+
+--Filter dishes--
+
+![Filter](https://github.com/Swagatika07/food-ordering-website/assets/99073952/87bd18dd-9cd1-4394-848b-c155093ec4cc)
+
+
 --SignUp and LogIn--
 
 ![Signup](https://github.com/Swagatika07/food-ordering-website/assets/99073952/314fddc6-7c88-40fa-b77e-8d59f60183cf)
@@ -22,7 +28,8 @@ Go to the master branch of this repository to check out the project code.
 
 --About Us and contact us--
 
-![aboutUs](https://github.com/Swagatika07/food-order
 
-![ContactUs](https://github.com/Swagatika07/food-ordering-website/assets/99073952/54a5ae08-d64c-4f0a-b161-05dc12218bae)
-ing-website/assets/99073952/f5d75838-58d9-41cc-8dbe-2476643ba203)
+![aboutUs](https://github.com/Swagatika07/food-ordering-website/assets/99073952/8eaa2e70-fd21-4198-9224-df4fa08adeb8)
+
+
+![ContactUs](https://github.com/Swagatika07/food-ordering-website/assets/99073952/28a5048b-994c-4e6a-b9d5-6b4c30d6eeb0)
